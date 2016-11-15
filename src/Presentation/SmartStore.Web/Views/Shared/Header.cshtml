@@ -3,7 +3,7 @@
 
 <div id="logobar" class="container">
 
-    <a href="@Url.RouteUrl("HomePage")" class="brand@(Model.LogoUploaded ? "" : " textual")">
+    @*<a href="@Url.RouteUrl("HomePage")" class="brand@(Model.LogoUploaded ? "" : " textual")">
             
         @if (Model.LogoUploaded) 
         {
@@ -17,7 +17,7 @@
         {
             @Model.LogoTitle    
         }
-    </a>
+    </a>*@
 
     <nav id="nav-home" class="clearfix">
         @Html.Action("Menu", "Common")

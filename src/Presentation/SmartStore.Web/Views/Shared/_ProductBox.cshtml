@@ -50,12 +50,12 @@
 }
 
 <figure class="picture" data-equalized-part="picture" data-equalized-valign="true">
-	@if (Model.DefaultPictureModel.ImageUrl.HasValue())
-	{
-		<a href="@productDetailLink" title="@Model.DefaultPictureModel.Title">
-			<img alt="@Model.DefaultPictureModel.AlternateText" src="@Model.DefaultPictureModel.ImageUrl" title="@Model.DefaultPictureModel.Title" />
-		</a>
-	}
+       @* @if (Model.DefaultPictureModel.ImageUrl.HasValue())
+    {
+        <a href="@productDetailLink" title="@Model.DefaultPictureModel.Title">
+            <img alt="@Model.DefaultPictureModel.AlternateText" src="@Model.DefaultPictureModel.ImageUrl" title="@Model.DefaultPictureModel.Title" />
+        </a>
+    }
     @if (Model.ColorAttributes.Any())
     {
         <div class="colors">
@@ -64,142 +64,142 @@
                 <span style="background-color: @clr.Color" title="@clr.FriendlyName"></span>
             }
         </div>
-    }
-</figure>
+    }*@
+    </figure>
 
-<div class="data">
+    <div class="data">
 
-    @if (Model.ShowReviews)
-	{
-        int ratingPercent = 0;
-        if (Model.TotalReviews != 0)
+        @if (Model.ShowReviews)
         {
-            ratingPercent = ((Model.RatingSum * 100) / Model.TotalReviews) / 5;
-        }
-
-        string reviewTitle = "";
-        if (Model.TotalReviews > 0)
-        {
-            reviewTitle = Model.TotalReviews + (Model.TotalReviews == 1 ? T("Reviews.Overview.Review") : T("Reviews.Overview.Reviews"));
-        }
-        <div class="reviews" title="@reviewTitle">
-            <div class="rating">
-                <div style="width: @(ratingPercent)%"></div>
-            </div>
-        </div>
-    }
-
-    @{
-        string name = null, nameTitle = null;
-        name = Model.Name.Truncate(50, "...");
-        if (Model.Name.Length > name.Length)
-        {
-            nameTitle = Model.Name;
-        }
-    }
-    <h3 class="name" data-equalized-part="name">
-        <a href="@productDetailLink" title="@nameTitle">
-            @if (Model.IsNew)
+            int ratingPercent = 0;
+            if (Model.TotalReviews != 0)
             {
-                <span class="label label-isnew">@T("Common.New")</span>
-            } 
-            <span>@name</span>
-        </a>
-    </h3>
-    @{
-		string desc = null, descTitle = null;
-		if (Model.ShortDescription.HasValue())
-		{
-			desc = Model.ShortDescription.Truncate(50, "...");
-			if (Model.ShortDescription.Length > desc.Length)
-			{
-				descTitle = Model.ShortDescription;
-			}
-		}
-    }
-    <p class="description" title="@descTitle" data-equalized-part="description">
-        @Html.Raw(desc)
-    </p>
-    
-    @if (Model.ShowDeliveryTimes)
-	{
-		<div class="delivery-time@(Model.InvisibleDeliveryTime ? " invisible" : "")" data-equalized-part="delivery-time">
-			@if ((!String.IsNullOrEmpty(Model.DeliveryTimeName) && !String.IsNullOrEmpty(Model.DeliveryTimeHexValue)) && Model.IsShipEnabled)
-			{
-				<span class="delivery-time-label">@T("Products.DeliveryTime")</span>
-				if (Model.DisplayDeliveryTimeAccordingToStock)
-				{
-					<span class="delivery-time-color" style="background-color:@Model.DeliveryTimeHexValue" title="@Model.DeliveryTimeName"></span>
-				}
-				else
-				{
-					<span class="delivery-time-color" style="background-color:#9d261d" title="@Model.StockAvailablity"></span>
-				}
-			}
-		</div>
-	}
-
-    <div class="prices" data-equalized-part="prices">
-        @if (!String.IsNullOrEmpty(Model.ProductPrice.OldPrice))
-        {
-            <p class="old-product-price">
-                <span class="price">@Model.ProductPrice.OldPrice</span>
-            </p>
-        }
-        <p class="product-price">
-            @if (Model.ProductPrice.ShowDiscountSign && Model.ProductPrice.HasDiscount)
-            {
-                <span class="label label-important label-discount-sign">%</span>
+                ratingPercent = ((Model.RatingSum * 100) / Model.TotalReviews) / 5;
             }
-            <span class="price text-success">@Model.ProductPrice.Price</span>
+
+            string reviewTitle = "";
+            if (Model.TotalReviews > 0)
+            {
+                reviewTitle = Model.TotalReviews + (Model.TotalReviews == 1 ? T("Reviews.Overview.Review") : T("Reviews.Overview.Reviews"));
+            }
+            <div class="reviews" title="@reviewTitle">
+                <div class="rating">
+                    <div style="width: @(ratingPercent)%"></div>
+                </div>
+            </div>
+        }
+
+        @{
+            string name = null, nameTitle = null;
+            name = Model.Name.Truncate(50, "...");
+            if (Model.Name.Length > name.Length)
+            {
+                nameTitle = Model.Name;
+            }
+        }
+        <h3 class="name" data-equalized-part="name">
+            <a href="@productDetailLink" title="@nameTitle">
+                @if (Model.IsNew)
+                {
+                    <span class="label label-isnew">@T("Common.New")</span>
+                }
+                <span>@name</span>
+            </a>
+        </h3>
+        @{
+            string desc = null, descTitle = null;
+            if (Model.ShortDescription.HasValue())
+            {
+                desc = Model.ShortDescription.Truncate(50, "...");
+                if (Model.ShortDescription.Length > desc.Length)
+                {
+                    descTitle = Model.ShortDescription;
+                }
+            }
+        }
+        <p class="description" title="@descTitle" data-equalized-part="description">
+            @Html.Raw(desc)
         </p>
 
-        @if (Model.DisplayBasePrice && !String.IsNullOrEmpty(Model.BasePriceInfo))
+        @if (Model.ShowDeliveryTimes)
         {
-        <div class="base-price muted">
-            @Model.BasePriceInfo
-        </div>
+            <div class="delivery-time@(Model.InvisibleDeliveryTime ? " invisible" : "")" data-equalized-part="delivery-time">
+                @if ((!String.IsNullOrEmpty(Model.DeliveryTimeName) && !String.IsNullOrEmpty(Model.DeliveryTimeHexValue)) && Model.IsShipEnabled)
+                {
+                    <span class="delivery-time-label">@T("Products.DeliveryTime")</span>
+                    if (Model.DisplayDeliveryTimeAccordingToStock)
+                    {
+                        <span class="delivery-time-color" style="background-color:@Model.DeliveryTimeHexValue" title="@Model.DeliveryTimeName"></span>
+                    }
+                    else
+                    {
+                        <span class="delivery-time-color" style="background-color:#9d261d" title="@Model.StockAvailablity"></span>
+                    }
+                }
+            </div>
         }
 
-        @if (Model.TransportSurcharge.HasValue())
-        {
-        <div class="transport-charge muted">
-            @Model.TransportSurcharge
+        <div class="prices" data-equalized-part="prices">
+            @if (!String.IsNullOrEmpty(Model.ProductPrice.OldPrice))
+            {
+                <p class="old-product-price">
+                    <span class="price">@Model.ProductPrice.OldPrice</span>
+                </p>
+            }
+            <p class="product-price">
+                @if (Model.ProductPrice.ShowDiscountSign && Model.ProductPrice.HasDiscount)
+                {
+                    <span class="label label-important label-discount-sign">%</span>
+                }
+                <span class="price text-success">@Model.ProductPrice.Price</span>
+            </p>
+
+            @if (Model.DisplayBasePrice && !String.IsNullOrEmpty(Model.BasePriceInfo))
+            {
+            <div class="base-price muted">
+                @Model.BasePriceInfo
+            </div>
+            }
+
+            @if (Model.TransportSurcharge.HasValue())
+            {
+            <div class="transport-charge muted">
+                @Model.TransportSurcharge
+            </div>
+            }
         </div>
-        }
-    </div>
 
-    <div class="buttons">
-                
-        @if (!Model.ProductPrice.DisableBuyButton && !Model.HideBuyButtonInLists)
-        {
-            if (!Model.ProductPrice.CallForPrice) { 
-                var title = (Model.ProductPrice.AvailableForPreOrder ? T("ShoppingCart.PreOrder") : T("ShoppingCart.AddToCart"));
-                <a data-href='@addtocartlink' 
-                    href="#"
-                    class="btn btn-warning ajax-cart-link"
-                    title="@title" 
-                    rel="tooltip nofollow"
-                    data-type="cart"
-                    data-action="add">
-                    <i class="fa fa-lg fa-cart-arrow-down"></i>      
-                </a>
-			}
-			else
-			{
-				<a class="btn btn-primary add-to-cart-button" rel="nofollow"
-				   href="@Url.Action("AskQuestion", "Product", new RouteValueDictionary { { "id", Model.Id } })"
-				   title="@T("Products.CallForPrice.GoToForm")">
-					<i class="fa fa-envelope"></i>
-				</a>
-			}
-		}
-        <a href='@Url.RouteUrl("Product", new RouteValueDictionary { { "SeName", Model.SeName } })' class="btn">
-            <i class="fa fa-info-circle"></i>
-            @T("Products.Details")
-        </a>
-    </div>
+        <div class="buttons">
 
-    @Html.Widget("productbox_add_info")
-    
-</div>
+            @if (!Model.ProductPrice.DisableBuyButton && !Model.HideBuyButtonInLists)
+            {
+                if (!Model.ProductPrice.CallForPrice) {
+                    var title = (Model.ProductPrice.AvailableForPreOrder ? T("ShoppingCart.PreOrder") : T("ShoppingCart.AddToCart"));
+                    <a data-href='@addtocartlink'
+                        href="#"
+                        class="btn btn-warning ajax-cart-link"
+                        title="@title"
+                        rel="tooltip nofollow"
+                        data-type="cart"
+                        data-action="add">
+                        <i class="fa fa-lg fa-cart-arrow-down"></i>
+                    </a>
+                }
+                else
+                {
+                    <a class="btn btn-primary add-to-cart-button" rel="nofollow"
+                       href="@Url.Action("AskQuestion", "Product", new RouteValueDictionary { { "id", Model.Id } })"
+                       title="@T("Products.CallForPrice.GoToForm")">
+                        <i class="fa fa-envelope"></i>
+                    </a>
+                }
+            }
+            <a href='@Url.RouteUrl("Product", new RouteValueDictionary { { "SeName", Model.SeName } })' class="btn">
+                <i class="fa fa-info-circle"></i>
+                @T("Products.Details")
+            </a>
+        </div>
+
+        @Html.Widget("productbox_add_info")
+
+    </div>

@@ -1584,6 +1584,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\select2\" />
+    <Folder Include="Tshirtecommerce\" />
     <Folder Include="Views\TaskScheduler\" />
   </ItemGroup>
   <ItemGroup>
