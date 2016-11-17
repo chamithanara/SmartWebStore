@@ -50,54 +50,54 @@
     @Html.Widget("header_menu_after")
 </ul>
 
-@*@if (Model.NewsEnabled || Model.BlogEnabled || Model.ForumEnabled || Model.DisplayAdminLink || Model.DisplayLoginLink)
+@if (Model.NewsEnabled || Model.BlogEnabled || Model.ForumEnabled || Model.DisplayAdminLink || Model.DisplayLoginLink)
 {
     <ul class="pull-left special">
-		@if (Model.NewsEnabled)
-		{
-			<li>
-				<a class="special-news" href="@Url.RouteUrl("NewsArchive")">
-					<i class="fa fa-rss-square"></i>
-					@T("News")
-				</a>
-			</li>
-		}
-        @if (Model.BlogEnabled)
-        {
-            <li>
-                <a class="special-blog" href="@Url.RouteUrl("Blog")">
-                    <i class="fa fa-pencil-square-o"></i>
-                    @T("Blog")
-                </a>
-            </li>
-        }
-        @if (Model.ForumEnabled)
-        {
-            <li>
-                <a class="special-forum" href="@Url.RouteUrl("Boards")">
-                    <i class="fa fa-users"></i>
-                    @T("Forum.Forums")
-                </a>
-            </li>
-        }
+		@*@if (Model.NewsEnabled)
+    {
+        <li>
+            <a class="special-news" href="@Url.RouteUrl("NewsArchive")">
+                <i class="fa fa-rss-square"></i>
+                @T("News")
+            </a>
+        </li>
+    }
+    @if (Model.BlogEnabled)
+    {
+        <li>
+            <a class="special-blog" href="@Url.RouteUrl("Blog")">
+                <i class="fa fa-pencil-square-o"></i>
+                @T("Blog")
+            </a>
+        </li>
+    }
+    @if (Model.ForumEnabled)
+    {
+        <li>
+            <a class="special-forum" href="@Url.RouteUrl("Boards")">
+                <i class="fa fa-users"></i>
+                @T("Forum.Forums")
+            </a>
+        </li>
+    }*@
         @if (Model.DisplayAdminLink)
-        {
-            <li>
-                <a href="@Url.Content("~/admin")" target="_admin" rel="nofollow">
-                    <i class="fa fa-cog"></i> 
-                    @T("Account.Administration")
-                </a>
-            </li>
-        }
-		else if (Model.DisplayLoginLink)
-		{
-			<li>
-				<a href="@Url.RouteUrl("Login", new { ReturnUrl = Request.RawUrl })" rel="nofollow">
-					<i class="fa fa-sign-in"></i>
-					@T("Account.Login")
-				</a>
-			</li>
-		}
-    </ul>
-}*@
+            {
+                <li>
+                    <a href="@Url.Content("~/admin")" target="_admin" rel="nofollow">
+                        <i class="fa fa-cog"></i>
+                        @T("Account.Administration")
+                    </a>
+                </li>
+            }
+            else if (Model.DisplayLoginLink)
+            {
+                <li>
+                    <a href="@Url.RouteUrl("Login", new { ReturnUrl = Request.RawUrl })" rel="nofollow">
+                        <i class="fa fa-sign-in"></i>
+                        @T("Account.Login")
+                    </a>
+                </li>
+            }
+        </ul>
+    }
 
