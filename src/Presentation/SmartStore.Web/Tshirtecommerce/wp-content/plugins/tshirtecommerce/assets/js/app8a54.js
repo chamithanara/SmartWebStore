@@ -69,7 +69,7 @@ var app = {
 		load: function(link)
 		{
 			var data = {};
-			data.key	= '1';
+			data.key = '1';
 			data.action = 'designer_action';
 			data.link = link;
 			var link = ajaxurl.split('wp-admin');
@@ -84,44 +84,44 @@ var app = {
 		add: function(e)
 		{
 			var id = jQuery(e).data('id');
-			id 		= String(id);
+			id 	= String(id);
 			if (jQuery(e).hasClass('design-idea') == true)
 			{
-				var url 	= site_e_url + '/tshirtecommerce/admin-template.php?product='+id+'&lightbox=1';
+				var url = site_e_url + '/tshirtecommerce/admin-template.php?product='+id+'&lightbox=1';
 			}
 			else
 			{
 				if (id.indexOf(':') == -1)
 				{
-					var title 	= jQuery(e).data('title');
-					var img 	= jQuery(e).children('img').attr('src');
+					var title = jQuery(e).data('title');
+					var img = jQuery(e).children('img').attr('src');
 					document.getElementById('_product_id').value = id;
 					document.getElementById('_product_title_img').value = title +'::'+ img;
 				
-					var url 	= site_e_url + '/tshirtecommerce/admin/index.php?/product/viewmodal/'+id;
+					var url = site_e_url + '/tshirtecommerce/admin/index.php?/product/viewmodal/'+id;
 				}
 				else
 				{
 					var params = id.split(':');
-					var url 	= site_e_url + '/tshirtecommerce/admin-template.php?user='+params[0]+'&id='+params[1]+'&product='+params[2]+'&color='+params[3]+'&lightbox=1';
+					var url = site_e_url + '/tshirtecommerce/admin-template.php?user='+params[0]+'&id='+params[1]+'&product='+params[2]+'&color='+params[3]+'&lightbox=1';
 				}
 			}
-			var html 	= '<span class="button-resize button-resize-full" onclick="resizePageDesign(this)"></span><iframe id="tshirtecommerce-designer" frameborder="0" noresize="noresize" width="100%" height="800px" src="'+url+'"></iframe>';
+			var html = '<span class="button-resize button-resize-full" onclick="resizePageDesign(this)"></span><iframe id="tshirtecommerce-designer" frameborder="0" noresize="noresize" width="100%" height="800px" src="'+url+'"></iframe>';
 			
 			jQuery('#add_designer_product').html(html);
 			jQuery('#designer-products').modal('hide');
 		},
 		product_detail: function(){
-			var product 		= {};
-			product.title 		= jQuery('#title').val();
+			var product = {};
+			product.title = jQuery('#title').val();
 			
 			if (typeof tinyMCE != 'undefined' && jQuery('#wp-content-wrap').hasClass('html-active') == false)
 			{
-				product.description 	= tinyMCE.get("content").getContent();
+				product.description = tinyMCE.get("content").getContent();
 			}
 			else
 			{
-				product.description 		= jQuery('#content').val();
+				product.description = jQuery('#content').val();
 			}
 			
 			if (typeof tinyMCE != 'undefined' && jQuery('#wp-excerpt-wrap').hasClass('html-active') == false)
@@ -130,17 +130,17 @@ var app = {
 			}
 			else
 			{
-				product.shortdescription 	= jQuery('#excerpt').val();
+				product.shortdescription = jQuery('#excerpt').val();
 			}
 			
-			var img 			= jQuery('#set-post-thumbnail img');
+			var img = jQuery('#set-post-thumbnail img');
 			if (img.length > 0)
-				product.thumb 	= jQuery(img[0]).attr('src');
+				product.thumb = jQuery(img[0]).attr('src');
 			else
-				product.thumb	= '';
-			product.sku 		= jQuery('#_sku').val();
-			product.price		= jQuery('#_regular_price').val();
-			product.sale_price 	= jQuery('#_sale_price').val();		
+				product.thumb = '';
+			product.sku = jQuery('#_sku').val();
+			product.price = jQuery('#_regular_price').val();
+			product.sale_price = jQuery('#_sale_price').val();		
 			
 			return product;
 		},
@@ -372,8 +372,7 @@ function e_productColor(e)
 	
 	jQuery('.e-custom-product').data('color', elm.data('color'));
 	
-	elm.addClass('active');
-	
+	elm.addClass('active');	
 	jQuery(document).triggerHandler( "product.color.images", e);
 }
 
